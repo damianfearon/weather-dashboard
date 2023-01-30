@@ -50,10 +50,13 @@ var iconCode = response.weather[0].icon;
 var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
 
 //  Combine city name, date, and moment format into a single variable
+var name = $("<h3>").html(city + date);
 
 // Display name of city in main card
+mainCard.prepend(name);
 
 // Display icon on the main card
+mainCard.append($("<img>").attr("src", iconURL));
 
 // Convert temperature from Kelvin and remove decimal places
 
