@@ -43,9 +43,11 @@ var date = moment().format(" DD/MM/YYYY");
 
 
 //  Retrieve icon code from API and assign to a variable
+var iconCode = response.weather[0].icon;
 
 
 //  Build main card with weather icon
+var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
 
 //  Combine city name, date, and moment format into a single variable
 
