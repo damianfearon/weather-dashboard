@@ -70,17 +70,30 @@ mainCard.append($("<p>").html("Temperature: " + temp + " &deg;C"));
 var lat = response.coord.lat;
 var lon = response.coord.lon;
 
-// Make individual API request for UV index and store response in a variable
+//  Send separate API request for UV index, using latitude and longitude
 $.ajax({
     url: "https://api.openweathermap.org/data/2.5/uvi?appid=519b0c10fc7659f2935f72b6aee733ae&lat=" + lat + "&lon=" + lon,
     method: "GET"
 
-//  Send separate API request for UV index, using latitude and longitude
 
 // Display UV index in main card
-
+}).then(function (response) {
+    mainCard.append($("<p>").html("UV Index: <span>" + response.value + "</span>"));
+    // 
+    if (response.value <= 2) {
+        $("span").attr("class", "btn btn-outline-success");
+    };
+    if (response.value > 2 && response.value <= 5) {
+        $("span").attr("class", "btn btn-outline-warning");
+    };
+    if (response.value > 5) {
+        $("span").attr("class", "btn btn-outline-danger");
+    };
+})
 // Implement function for 5-day forecast API call
-
+$.ajax({
+    url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=519b0c10fc7659f2935f72b6aee733ae&",
+    method: "GET"
 //  Display 5 columns from forecast API response
 
 //  Show humidity in the dashboard
