@@ -95,6 +95,28 @@ $.ajax({
     url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=519b0c10fc7659f2935f72b6aee733ae&",
     method: "GET"
 //  Display 5 columns from forecast API response
+}).then(function (response) {
+    for (i = 0; i < 5; i++) {
+        // creates the columns
+        var newCard = $("<div>").attr("class", "col fiveDay bg-primary text-white rounded-lg p-2");
+        $("#weeklyForecast").append(newCard);
+        // uses moment for the date
+        var myDate = new Date(response.list[i * 8].dt * 1000);
+        // displays date
+        newCard.append($("<h4>").html(myDate.toLocaleDateString()));
+        // brings back the icon url suffix
+        var iconCode = response.list[i * 8].weather[0].icon;
+        // builds the icon URL
+        var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+        // displays the icon
+        newCard.append($("<img>").attr("src", iconURL));
+        // converts K and removes decimals using Math.round
+        var temp = Math.round(response.list[i * 8].main.temp - 273.15);
+        // displays temp
+        newCard.append($("<p>").html("Temp: " + temp + " &deg;C"));
+        // creates a var for humity from the response
+        var humidity = response.list[i * 8].main.humidity;
+
 
 //  Show humidity in the dashboard
 
