@@ -17,13 +17,20 @@ for (i = 0; i < searchHistory.length; i++) {
         href: "#"
     }); 
 // Add history button below search field using append
-
-
+cityListButton.text(searchHistory[i]);
+$(".list-group").append(cityListButton);
+}
+};
+var city;
+var mainCard = $(".card-body");
 // invokes getItems
-
+getItems();
 
 // main card
-
+function getData() {
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=519b0c10fc7659f2935f72b6aee733ae"
+    mainCard.empty();
+    $("#weeklyForecast").empty();
 
     // requests
   
