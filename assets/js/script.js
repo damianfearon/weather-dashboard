@@ -39,6 +39,7 @@ function getData() {
     }).then(function (response) {
 
 //  Use moment.js to generate current date
+var date = moment().format(" DD/MM/YYYY");
 
 
 //  Retrieve icon code from API and assign to a variable
