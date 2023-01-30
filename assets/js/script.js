@@ -33,7 +33,10 @@ function getData() {
     $("#weeklyForecast").empty();
 
     // requests
-  
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
 
 //  Use moment.js to generate current date
 
