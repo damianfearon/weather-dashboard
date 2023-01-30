@@ -8,7 +8,14 @@ function getItems() {
         searchHistory = storedCities;
     };
 // Store up to 8 cities in local storage as a list
-
+for (i = 0; i < searchHistory.length; i++) {
+    if (i == 8) {
+        break;
+      }
+      cityListButton = $("<a>").attr({
+        class: "list-group-item list-group-item-action",
+        href: "#"
+    }); 
 // Add history button below search field using append
 
 
