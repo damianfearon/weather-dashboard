@@ -59,7 +59,12 @@ mainCard.prepend(name);
 mainCard.append($("<img>").attr("src", iconURL));
 
 // Convert temperature from Kelvin and remove decimal places
-
+var temp = Math.round (response.main.temp - 273.15);
+mainCard.append($("<p>").html("Temperature: " + temp + " &deg;C"));
+        var humidity = response.main.humidity;
+        mainCard.append($("<p>").html("Humidity: " + humidity + " %")) ;
+        var windSpeed = response.wind.speed;
+        mainCard.append($("<p>").html("Wind Speed: " + windSpeed + " mph"));
 // Create a variable to store the next request for UV index from API response
 
 // Make individual API request for UV index and store response in a variable
