@@ -16,6 +16,7 @@ for (i = 0; i < searchHistory.length; i++) {
         class: "list-group-item list-group-item-action",
         href: "#"
     }); 
+    
 // Add history button below search field using append
 cityListButton.text(searchHistory[i]);
 $(".list-group").append(cityListButton);
@@ -23,6 +24,7 @@ $(".list-group").append(cityListButton);
 };
 var city;
 var mainCard = $(".card-body");
+
 // invokes getItems
 getItems();
 
@@ -116,9 +118,39 @@ $.ajax({
         newCard.append($("<p>").html("Temp: " + temp + " &deg;C"));
         // creates a var for humity from the response
         var humidity = response.list[i * 8].main.humidity;
+        //  Show humidity in the dashboard
+        newCard.append($("<p>").html("Humidity: " + humidity + " %"));
+            }
+        })
+    })
+};
 
+// searches and adds to history
+$("#searchCity").click(function() {
+    city = $("#city").val();
+    getData();
+    var checkArray = searchHistory.includes(city);
+    if (checkArray == true) {
+        return
+    }
+    else {
+        searchHistory.push(city);
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+        var cityListButton = $("<a>").attr({
+            // list-group-item-action keeps the search history buttons consistent
+            class: "list-group-item list-group-item-action",
+            href: "#"
+        });
+        cityListButton.text(city);
+        $(".list-group").append(cityListButton);
+    };
+});
+// listens for action on the history buttons
+$(".list-group-item").click(function() {
+    city = $(this).text();
+    getData();
+});
 
-//  Show humidity in the dashboard
 
 
 
