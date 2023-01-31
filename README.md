@@ -25,15 +25,26 @@ The app should:
 <li>When a user searches for a city they are presented with current and future conditions for that city and that city is added to the search history.</li>
 
 <li>When a user views the current weather conditions for that city they are presented with:</li>
-
-<li>Allow a user to enter an event when they click a timeblock.</li>
-
-<li>Save the event in local storage when the save button is clicked in that timeblock.</li>
-
-<li>Persist events between refreshes of a page </li> </br>
-
-
+<ul>
+<li>The city name
+<li>The date</li>
+<li>An icon representation of weather conditions</li>
+<li>The temperature/li>
+<li>The humidity</li>
+<li>The wind speed</li> </ul></br>
 </ul>
+
+<li>When a user views future weather conditions for that city they are presented with a 5-day forecast that displays:</li>
+<ul>
+<li>The date
+<li>An icon representation of weather conditions</li>
+<li>The temperature/li>
+<li>The humidity</li> </ul></br>
+</ul>
+
+</br>
+<li>When a user clicks on a city in the search history they are again presented with current and future conditions for that city.
+
  <br>
 
 <h2>Grading Requirements</h2>
@@ -45,7 +56,10 @@ The app should:
 
 Satisfies all of the above acceptance criteria plus the following:
 
-<li>Uses a date utility library to work with date and time</li>
+<li>Uses the OpenWeather API to retrieve weather data.</li>
+<li>Uses localStorage to store persistent data.</li>
+
+
 </ul>
  <br>
 
@@ -97,7 +111,7 @@ Satisfies all of the above acceptance criteria plus the following:
 <h3>Screenshot</h3>
 <br> 
 <img
-  src="assets\screenshot\screenshot.gif"
+  src="assets\screenshot.jpg"
   alt="Alt text"
   title="Optional title"
   style="display: inline-block; margin: 0 auto; max-width: 500px">
